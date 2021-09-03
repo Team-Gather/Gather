@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
     }
     body {
         font-family: 'Poppins', sans-serif;
-        background-color: #fff;
+        background-color: #ecf0f3;
         color: #000;
     }
     input, button {
