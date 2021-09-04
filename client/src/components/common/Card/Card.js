@@ -27,7 +27,7 @@ const Card = () => {
   const [isClicked, setIsClicked] = useState(false);
 
   const onHandleClick = () => {
-    setIsClicked(!isClicked);
+    setIsClicked((prev) => !prev);
   };
 
   return (

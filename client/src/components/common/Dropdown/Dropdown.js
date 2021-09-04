@@ -6,7 +6,7 @@ const Dropdown = () => {
   const [isDropdown, setIsDropdown] = useState(false);
 
   const onHandleDropdown = () => {
-    setIsDropdown(!isDropdown);
+    setIsDropdown((prev) => !prev);
   };
 
   return (
