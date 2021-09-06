@@ -1,4 +1,4 @@
 # Gather
 
 ## Install and Run
-front-end: `root/client -> npm start`
+front-end: `root/client ->  npm start`
