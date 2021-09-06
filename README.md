@@ -1,1 +1,3 @@
-## Gather
+# Gather
+
+## Install and Run 
