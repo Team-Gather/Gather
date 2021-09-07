@@ -29,7 +29,7 @@ export const Wrapper = styled.div`
 export const Title = styled.div`
   font-size: 30px;
   font-weight: 600;
-  margin-bottom: 35px;
+  margin-bottom: 10px;
   color: #595959;
 `;
 
@@ -160,4 +160,57 @@ export const Error = styled.div`
   font-size: 14px;
   font-weight: 500;
   margin: 8px 8px 16px 8px;
+`;
+
+export const SocialIcons = styled.div`
+  margin: 5px 0 25px 0;
+  & > a {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    height: 50px;
+    width: 50px;
+    display: inline-flex;
+    margin: 0.5rem;
+    border-radius: 50%;
+
+    background: #ecf0f3;
+    border-radius: 50%;
+    box-shadow: -3px 3px 7px #ffffff, 3px 3px 5px #ceced1;
+
+    @media screen and (max-width: 600px) {
+      margin: 0 0.5rem;
+    }
+  }
+
+  & > a:hover::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background: #ecf0f3;
+    border-radius: 50%;
+    box-shadow: inset -3px 3px 7px #ffffff, inset 3px 3px 5px #ceced1;
+  }
+
+  & > a > span {
+    position: relative;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    line-height: 55px;
+    z-index: 5;
+  }
+
+  & > a > .instagram {
+    color: #e1306c;
+  }
+
+  & > a > .linkedin {
+    color: #4267b2;
+  }
 `;

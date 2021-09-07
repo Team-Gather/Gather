@@ -15,8 +15,6 @@ export const emailValidator = {
 };
 
 export const passwordValidator = {
-  invalidText: 'This password is Invalid',
-
   length: {
     validator: (val) => val.length > 7 && val.length < 13,
   },

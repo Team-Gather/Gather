@@ -4,18 +4,22 @@ import {
   Wrapper,
   Field,
   Title,
-  ImgArea,
-  InnerArea,
   ForgotPassword,
   Button,
   GoSignUp,
   Error,
+  SocialIcons,
 } from './LoginStyle';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { ROUTES } from 'utils/routes';
 import { Link } from 'react-router-dom';
-import developer from 'assets/softwareengineer.jpeg';
 import { emailValidator } from 'utils/validation';
+import {
+  GoogleOutlined,
+  InstagramOutlined,
+  LinkedinOutlined,
+  GithubOutlined,
+} from '@ant-design/icons';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -56,23 +60,32 @@ const Login = () => {
   return (
     <Container>
       <Wrapper>
-        <ImgArea>
-          <InnerArea>
-            <img src={developer} alt="developer" />
-          </InnerArea>
-        </ImgArea>
-        <Title>Login</Title>
+        <Title>Gather</Title>
+        <SocialIcons>
+          <Link>
+            <GoogleOutlined className="google" />
+          </Link>
+          <Link>
+            <InstagramOutlined className="instagram" />
+          </Link>
+          <Link>
+            <LinkedinOutlined className="linkedin" />
+          </Link>
+          <Link>
+            <GithubOutlined className="github" />
+          </Link>
+        </SocialIcons>
         <form onSubmit={onHandleSubmit}>
           <Field>
             <UserOutlined />
-            <input type="text" onChange={onChangeEmail} />
+            <input type="text" onChange={onChangeEmail} placeholder="Email" />
             <label>Email</label>
           </Field>
           {!email && <Error>Please input your email</Error>}
           {email && isEmailInvalid && <Error>{emailInvalidText}</Error>}
           <Field>
             <LockOutlined />
-            <input type="password" onChange={onChangePassword} />
+            <input type="password" onChange={onChangePassword} placeholder="Password" />
             <label>Password</label>
           </Field>
           {!password && <Error>Please input your password</Error>}
