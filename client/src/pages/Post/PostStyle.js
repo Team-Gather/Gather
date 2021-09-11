@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   min-height: 650px;
   margin-top: 5px;
-  padding: 1.2rem 8rem;
+  padding: 1.2rem 18rem;
 
   @media screen and (max-width: 600px) {
     padding: 1rem 0.4rem;
