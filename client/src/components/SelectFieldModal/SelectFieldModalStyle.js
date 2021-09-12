@@ -38,12 +38,11 @@ export const Checkbox = styled.li`
   cursor: pointer;
   z-index: 4;
 
-  color: ${({ isChecked }) => (isChecked ? '#2D4CC8' : '')};
-  background: #ecf0f3;
-  box-shadow: ${({ isChecked }) =>
-    isChecked
-      ? 'inset -3px 3px 7px #ffffff, inset 3px 3px 5px rgba(94, 104, 121, 0.288);'
-      : '-3px 3px 7px #ffffff, 3px 3px 5px rgba(94, 104, 121, 0.288);'};
+  transition: ${({ theme }) => theme.transition.primary};
+  color: ${({ isChecked, theme }) => (isChecked ? theme.color.white : '')};
+  background: ${({ isChecked, theme }) =>
+    isChecked ? theme.color.primary : theme.color.background};
+  box-shadow: ${({ isChecked, theme }) => (isChecked ? theme.shadow.hover : theme.shadow.primary)};
 `;
 
 export const ButtonWrapper = styled.div`
@@ -66,7 +65,7 @@ export const Button = styled.button`
 
   background: #ecf0f3;
   border-radius: 10px;
-  box-shadow: -3px 3px 7px #ffffff, 3px 3px 5px #ceced1;
+  box-shadow: ${({ theme }) => theme.shadow.primary};
 
   &:first-child {
     color: #f5222d;
@@ -84,7 +83,7 @@ export const Button = styled.button`
     background: #ecf0f3;
     border-radius: 5px;
     z-index: -1;
-    box-shadow: inset -3px 3px 7px #ffffff, inset 3px 3px 5px #ceced1;
+    box-shadow: ${({ theme }) => theme.shadow.pressed};
   }
 
   & > span > svg {
