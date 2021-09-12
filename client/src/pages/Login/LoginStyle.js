@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
   width: 430px;
   padding: 60px 35px 35px 35px;
   border-radius: 40px;
-  background: #ecf0f3;
+  background: ${({ theme }) => theme.color.background};
   box-shadow: 6px 6px 12px #ceced1, -4px -2px 12px #ffffff;
 
   @media screen and (max-width: 600px) {
@@ -69,8 +69,8 @@ export const Field = styled.div`
     width: 100%;
     padding-left: 45px;
     font-size: 16px;
-    color: #595959;
-    background: #ecf0f3;
+    color: ${({ theme }) => theme.color.black};
+    background: ${({ theme }) => theme.color.background};
     border-radius: 25px;
     box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73;
   }
@@ -92,7 +92,7 @@ export const Field = styled.div`
     top: 50%;
     left: 45px;
     pointer-events: none;
-    color: #666666;
+    color: ${({ theme }) => theme.color.primaryNoLinear};
     transform: translateY(-50%);
   }
 
@@ -100,7 +100,7 @@ export const Field = styled.div`
     position: absolute;
     width: 50px;
     line-height: 50px;
-    color: #595959;
+    color: ${({ theme }) => theme.color.black};
   }
 `;
 
@@ -110,7 +110,7 @@ export const ForgotPassword = styled.div`
 
   & > a {
     font-size: 15px;
-    color: #2d4cc8;
+    color: ${({ theme }) => theme.color.primaryNoLinear};
   }
 
   &:hover a {
@@ -124,17 +124,16 @@ export const Button = styled.button`
   height: 50px;
   font-size: 18px;
   font-weight: 600;
-  background: #ecf0f3;
   cursor: pointer;
   border-radius: 25px;
-  box-shadow: ${({ loginSuccess }) =>
-    loginSuccess
-      ? '2px 2px 5px #babecc, -5px -5px 10px #ffffff73;'
-      : ' inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73'};
-  color: ${({ loginSuccess }) => (loginSuccess ? '#595959' : 'lightgray')};
+
+  transition: ${({ theme }) => theme.transition.primary};
+  background: ${({ theme }) => theme.color.primary};
+  box-shadow: ${({ theme }) => theme.shadow.primary};
+  color: ${({ theme }) => theme.color.white};
 
   &:hover {
-    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73;
+    box-shadow: ${({ theme }) => theme.shadow.hover};
   }
 `;
 

@@ -38,7 +38,6 @@ export const Checkbox = styled.li`
   cursor: pointer;
   z-index: 4;
 
-  transition: ${({ theme }) => theme.transition.primary};
   color: ${({ isChecked, theme }) => (isChecked ? theme.color.white : '')};
   background: ${({ isChecked, theme }) =>
     isChecked ? theme.color.primary : theme.color.background};
