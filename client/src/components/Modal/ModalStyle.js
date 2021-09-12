@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const CreateModal = styled.div`
   position: fixed;
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
   left: 0;
   bottom: 0;
   top: 0;
@@ -11,9 +12,8 @@ export const CreateModal = styled.div`
 
   & > div {
     margin-top: 30px;
+    opacity: 1 !important;
     display: inline-block;
-    // width: 440px;
-    box-shadow: 6px 6px 12px #ceced1, -4px -2px 12px #ffffff;
     background-color: #ecf0f3;
     border-radius: 30px;
     user-select: none;
