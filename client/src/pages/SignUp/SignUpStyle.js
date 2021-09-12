@@ -90,21 +90,22 @@ export const Button = styled.button`
   height: 50px;
   font-size: 18px;
   font-weight: 600;
-  background: #ecf0f3;
+  background: ${({ signUpSuccess, theme }) =>
+    signUpSuccess ? theme.color.primary : theme.color.background};
   cursor: pointer;
   border-radius: 25px;
-  box-shadow: ${({ signUpSuccess }) =>
-    signUpSuccess
-      ? '2px 2px 5px #babecc, -5px -5px 10px #ffffff73;'
-      : ' inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73'};
-  color: ${({ signUpSuccess }) => (signUpSuccess ? '#595959' : 'lightgray')};
+  box-shadow: ${({ signUpSuccess, theme }) =>
+    signUpSuccess ? theme.shadow.primary : theme.shadow.hover};
+  color: ${({ signUpSuccess, theme }) =>
+    signUpSuccess ? theme.color.white : theme.color.lightgray};
+  transition: ${({ theme }) => theme.transition.primary};
 
   @media screen and (max-width: 600px) {
     margin: 2rem 0;
   }
 
   &:hover {
-    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73;
+    box-shadow: 2px 2px 4px #babecc, -3px -3px 6px #ffffff73;
   }
 `;
 

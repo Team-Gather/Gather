@@ -89,6 +89,7 @@ const SignUp = () => {
 
   useEffect(() => {
     if (
+      name &&
       !mismatchError &&
       email &&
       password &&
@@ -100,6 +101,7 @@ const SignUp = () => {
       setSignUpSuccess(true);
     } else setSignUpSuccess(false);
   }, [
+    name,
     mismatchError,
     email,
     isEmailInvalid,
