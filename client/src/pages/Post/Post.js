@@ -5,8 +5,13 @@ import { useHistory } from 'react-router';
 import { formats, modules, options } from 'utils/constants';
 import SelectFieldModal from 'components/SelectFieldModal/SelectFieldModal';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { checkFieldsState, fieldModalState } from 'atom/atom';
-import { CheckCircleOutlined, MinusOutlined, SearchOutlined } from '@ant-design/icons';
+import { checkFieldsState, fieldModalState, isFieldSelected } from 'atom/atom';
+import {
+  CheckCircleOutlined,
+  MinusOutlined,
+  SearchOutlined,
+  CheckOutlined,
+} from '@ant-design/icons';
 import Select from 'react-select';
 import './PostStyle.css';
 import { SubmitWrapper, quillStyle, Container, SelectWrapper, Button, Fields } from './PostStyle';
@@ -15,6 +20,7 @@ import { ROUTES } from 'utils/routes';
 const Post = () => {
   const history = useHistory();
   const checkFields = useRecoilValue(checkFieldsState);
+  const isFieldsSelected = useRecoilValue(isFieldSelected);
 
   const [value, setValue] = useState('');
   const [showSelectFieldModal, setShowSelectFieldModal] = useRecoilState(fieldModalState);
@@ -32,8 +38,12 @@ const Post = () => {
       <input type="text" placeholder="Make your title" />
       <SelectWrapper>
         <Select options={options} isMulti placeholder="Select Languages" />
-        <Button onClick={onHandleShowModal} isClicked={showSelectFieldModal}>
-          <SearchOutlined />
+        <Button
+          onClick={onHandleShowModal}
+          isClicked={showSelectFieldModal}
+          isFieldsSelected={isFieldsSelected}
+        >
+          {isFieldsSelected ? <CheckOutlined /> : <SearchOutlined />}
         </Button>
       </SelectWrapper>
       <SelectWrapper>
@@ -64,8 +74,12 @@ const Post = () => {
       />
       <form onSubmit={onSubmit}>
         <SubmitWrapper>
-          <button onClick={goMainPage}>Cancel</button>
-          <button onClick={onSubmit}>Submit</button>
+          <button className="cancel" onClick={goMainPage}>
+            Cancel
+          </button>
+          <button className="submit_post" onClick={onSubmit}>
+            Submit
+          </button>
         </SubmitWrapper>
       </form>
     </Container>
