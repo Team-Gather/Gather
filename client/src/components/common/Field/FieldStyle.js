@@ -25,7 +25,7 @@ export const FieldWrapper = styled.div`
     opacity: 0;
   }
 
-  &:nth-child(2) {
+  &:nth-child(n) {
     margin-top: 20px;
   }
 

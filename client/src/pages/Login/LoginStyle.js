@@ -162,7 +162,7 @@ export const Error = styled.div`
 `;
 
 export const SocialIcons = styled.div`
-  margin: 5px 0 25px 0;
+  margin: 5px 0;
   & > a {
     text-decoration: none;
     color: inherit;
