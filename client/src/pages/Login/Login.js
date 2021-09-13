@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Container,
   Wrapper,
-  Field,
+  //Field,
   Title,
   ForgotPassword,
   Button,
@@ -20,6 +20,7 @@ import {
   LinkedinOutlined,
   GithubOutlined,
 } from '@ant-design/icons';
+import Field from 'styles/common/Field/Field';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -76,19 +77,18 @@ const Login = () => {
           </Link>
         </SocialIcons>
         <form onSubmit={onHandleSubmit}>
-          <Field>
-            <UserOutlined />
-            <input type="text" onChange={onChangeEmail} placeholder="Email" />
-            <label>Email</label>
-          </Field>
-          {!email && <Error>Please input your email</Error>}
-          {email && isEmailInvalid && <Error>{emailInvalidText}</Error>}
-          <Field>
-            <LockOutlined />
-            <input type="password" onChange={onChangePassword} placeholder="Password" />
-            <label>Password</label>
-          </Field>
-          {!password && <Error>Please input your password</Error>}
+          <Field
+            type="email"
+            icon={<UserOutlined />}
+            onChangeFunc={onChangeEmail}
+            placeholder="Email"
+          />
+          <Field
+            type="password"
+            icon={<LockOutlined />}
+            onChangeFunc={onChangePassword}
+            placeholder="Password"
+          />
           <ForgotPassword>
             <Link to={ROUTES.SIGNUP}>Forgot Password?</Link>
           </ForgotPassword>
