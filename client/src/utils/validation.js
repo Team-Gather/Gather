@@ -5,16 +5,29 @@ const EMAIL_REGEX = new RegExp(
 const passwordCapitalCheckRegex = new RegExp(/(?=.*[a-z])(?=.*[A-Z])/);
 const passwordSpecialCheckRegex = new RegExp(/(?=.*[0-9])(?=.*[@$!%*#?&])/);
 
+export const nameValidator = {
+  required: {
+    validator: (val) => val.length > 0,
+    invalidText: 'Please input your name',
+  },
+};
+
 export const emailValidator = {
+  required: {
+    validator: (val) => val.length > 0,
+    invalidText: 'Please input your email',
+  },
   format: {
+    validator: (val) => EMAIL_REGEX.test(val),
     invalidText: 'This email is invalid',
-    validator(val) {
-      return EMAIL_REGEX.test(val);
-    },
   },
 };
 
 export const passwordValidator = {
+  required: {
+    validator: (val) => val.length > 0,
+  },
+
   length: {
     validator: (val) => val.length > 7 && val.length < 13,
   },
