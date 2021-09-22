@@ -1,77 +1,28 @@
-import React, { useState } from 'react';
-import ReactQuill from 'react-quill';
+import React from 'react';
 import 'react-quill/dist/quill.snow.css';
 import { useHistory } from 'react-router';
-import { formats, modules, options } from 'utils/constants';
 import SelectFieldModal from 'components/SelectFieldModal/SelectFieldModal';
-import { useRecoilValue, useRecoilState } from 'recoil';
-import { checkFieldsState, fieldModalState, isFieldSelected } from 'atom/atom';
-import {
-  CheckCircleOutlined,
-  MinusOutlined,
-  SearchOutlined,
-  CheckOutlined,
-} from '@ant-design/icons';
-import Select from 'react-select';
-import './PostStyle.css';
-import { SubmitWrapper, quillStyle, Container, SelectWrapper, Button, Fields } from './PostStyle';
+import { useRecoilValue } from 'recoil';
+import { fieldModalState } from 'atom/atom';
+import { SubmitWrapper, Container } from './PostStyle';
 import { ROUTES } from 'utils/routes';
+import TextEditor from 'components/TextEdtior/TextEditor';
+import Selects from 'components/Selects/Selects';
 
 const Post = () => {
   const history = useHistory();
-  const checkFields = useRecoilValue(checkFieldsState);
-  const isFieldsSelected = useRecoilValue(isFieldSelected);
-
-  const [value, setValue] = useState('');
-  const [showSelectFieldModal, setShowSelectFieldModal] = useRecoilState(fieldModalState);
-
-  const onHandleShowModal = () => setShowSelectFieldModal(true);
-
-  const onChangeText = (value) => setValue(value);
+  const showSelectFieldModal = useRecoilValue(fieldModalState);
 
   const onSubmit = (e) => e.preventDefault();
-
   const goMainPage = () => history.push(`${ROUTES.MAIN}`);
 
   return (
     <Container>
       <input type="text" placeholder="Make your title" />
-      <SelectWrapper>
-        <Select options={options} isMulti placeholder="Select Languages" />
-        <Button
-          onClick={onHandleShowModal}
-          isClicked={showSelectFieldModal}
-          isFieldsSelected={isFieldsSelected}
-        >
-          {isFieldsSelected ? <CheckOutlined /> : <SearchOutlined />}
-        </Button>
-      </SelectWrapper>
-      <SelectWrapper>
-        <Fields isSelected={checkFields.length}>
-          {checkFields.map((item, i) => (
-            <div>
-              {i === 0 && <CheckCircleOutlined style={{ marginRight: '0.5rem' }} />}
-              {item}
-              {i !== checkFields.length - 1 && (
-                <MinusOutlined
-                  style={{ transform: 'rotate(90deg)', padding: '0 0.4rem', opacity: '0.2' }}
-                />
-              )}
-            </div>
-          ))}
-        </Fields>
-      </SelectWrapper>
-
+      <Selects />
       {showSelectFieldModal && <SelectFieldModal />}
+      <TextEditor />
 
-      <ReactQuill
-        style={quillStyle}
-        theme="snow"
-        modules={modules}
-        formats={formats}
-        value={value || ''}
-        onChange={(content, delta, source, editor) => onChangeText(editor.getHTML())}
-      />
       <form onSubmit={onSubmit}>
         <SubmitWrapper>
           <button className="cancel" onClick={goMainPage}>

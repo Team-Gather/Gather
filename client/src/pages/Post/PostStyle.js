@@ -166,8 +166,3 @@ export const SubmitWrapper = styled.div`
     box-shadow: ${({ theme }) => theme.shadow.hover};
   }
 `;
-
-export const quillStyle = {
-  height: '600px',
-  marginTop: '10px',
-};
