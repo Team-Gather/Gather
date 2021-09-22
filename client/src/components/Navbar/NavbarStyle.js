@@ -17,9 +17,10 @@ export const NavbarContainer = styled.nav`
 
   @media screen and (max-width: 600px) {
     padding: 1rem 0.4rem;
+    height: 60px;
   }
 
-  box-shadow: 3px 3px 5px #ceced1;
+  box-shadow: 3px 3px 6px #b8b9be;
 `;
 
 export const NavLogo = styled(Link)`
@@ -29,20 +30,10 @@ export const NavLogo = styled(Link)`
   font-weight: 600;
   border-radius: 10px;
   padding: 1rem;
-  box-shadow: -3px 3px 7px #ffffff, 3px 3px 5px #ceced1;
 
-  &:hover::before {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-
-    background: #ecf0f3;
-    border-radius: 5px;
-    z-index: -1;
-    box-shadow: inset -3px 3px 7px #ffffff, inset 3px 3px 5px #ceced1;
+  @media screen and (max-width: 600px) {
+    padding: 0.5rem 0.8rem;
+    font-size: 1rem;
   }
 `;
 
@@ -62,10 +53,6 @@ export const NavItems = styled.div`
       margin-right: 1rem;
     }
   }
-
-  & > .write > span {
-    margin-left: 0.5rem;
-  }
 `;
 
 export const Post = styled(Link)`
@@ -76,7 +63,13 @@ export const Post = styled(Link)`
   font-weight: 500;
   border-radius: 10px;
   padding: 1rem;
-  box-shadow: -3px 3px 7px #ffffff, 3px 3px 5px #ceced1;
+  border: 1px solid #d1d9e6;
+  box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #ffffff;
+
+  @media screen and (max-width: 600px) {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
 
   &:hover::before {
     position: absolute;
@@ -89,7 +82,7 @@ export const Post = styled(Link)`
     background: #ecf0f3;
     border-radius: 5px;
     z-index: -1;
-    box-shadow: inset -3px 3px 7px #ffffff, inset 3px 3px 5px #ceced1;
+    box-shadow: inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #ffffff;
   }
 `;
 
@@ -101,12 +94,18 @@ export const Profile = styled.div`
   font-weight: 500;
   border-radius: 10px;
   padding: 1rem;
+  border: 1px solid #d1d9e6;
   color: ${({ isDropdown }) => (isDropdown ? '#2D4CC8' : '')};
   background: ${({ isDropdown }) => (isDropdown ? '#ecf0f3' : '')};
   box-shadow: ${({ isDropdown }) =>
     isDropdown
-      ? 'inset -3px 3px 7px #ffffff, inset 3px 3px 5px #ceced1'
-      : '-3px 3px 7px #ffffff, 3px 3px 5px #ceced1'};
+      ? 'inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #ffffff'
+      : '3px 3px 6px #b8b9be, -3px -3px 6px #ffffff'};
+
+  @media screen and (max-width: 600px) {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
 
   &:hover::before {
     position: absolute;
@@ -119,7 +118,7 @@ export const Profile = styled.div`
     background: #ecf0f3;
     border-radius: 10px;
     z-index: -1;
-    box-shadow: inset -3px 3px 7px #ffffff, inset 3px 3px 5px #ceced1;
+    box-shadow: inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #ffffff;
   }
 `;
 

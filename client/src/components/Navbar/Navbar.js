@@ -16,7 +16,6 @@ const Navbar = () => {
       <NavLogo to={ROUTES.MAIN}>Gather</NavLogo>
       <NavItems>
         <Post to={ROUTES.POST} className="write">
-          Post
           <FormOutlined />
         </Post>
         <Profile onClick={onHandleDropdown} isDropdown={isDropdown}>

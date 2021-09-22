@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ToggleContainer, ToggleBox, ToggleText } from './ToggleStyle';
 
-const Toggle = () => {
+const Toggle = ({ title }) => {
   const [onToggle, setOnToggle] = useState(false);
 
   const onHandleToggle = () => {
@@ -13,7 +13,7 @@ const Toggle = () => {
       <ToggleBox onToggle={onToggle} onClick={onHandleToggle}>
         <input type="checkbox" />
       </ToggleBox>
-      <ToggleText onToggle={onToggle}>{onToggle ? 'Checked' : 'Unchecked'}</ToggleText>
+      <ToggleText>{title}</ToggleText>
     </ToggleContainer>
   );
 };
