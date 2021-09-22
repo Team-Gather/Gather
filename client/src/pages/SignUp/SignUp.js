@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import {
   Container,
   Wrapper,
-  Field,
+  // Field,
   GoLogin,
   Button,
   Title,
   Error,
   SocialIcons,
 } from './SignUpStyle';
+import Field from 'styles/common/Field/Field';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { ROUTES } from 'utils/routes';
@@ -131,27 +132,29 @@ const SignUp = () => {
         </SocialIcons>
 
         <form onSubmit={onHandleSubmit}>
-          <Field>
-            <UserOutlined />
-            <input type="text" placeholder="User Name" onChange={onChangeName} />
-          </Field>
+          <Field
+            type="text"
+            icon={<UserOutlined />}
+            onChangeFunc={onChangeName}
+            placeholder="Name"
+          />
           {!name && <Error>Please input your name</Error>}
 
-          <Field>
-            <UserOutlined />
-            <input type="text" placeholder="name@email.com" onChange={onChangeEmail} />
-          </Field>
+          <Field
+            type="email"
+            icon={<UserOutlined />}
+            onChangeFunc={onChangeEmail}
+            placeholder="Email"
+          />
           {!email && <Error>Please input your email</Error>}
           {email && isEmailInvalid && <Error>{emailInvalidText}</Error>}
 
-          <Field>
-            <LockOutlined />
-            <input
-              type="password"
-              onChange={onChangePassword}
-              placeholder="6~13 Characters & Number, 1 Capital letter"
-            />
-          </Field>
+          <Field
+            type="password"
+            icon={<LockOutlined />}
+            onChangeFunc={onChangePassword}
+            placeholder="Password"
+          />
           {!password && <Error>Please input your password</Error>}
           {password && (
             <div>
@@ -160,14 +163,13 @@ const SignUp = () => {
               {isPwCharInValid && <Error>{inValidPasswordText.char}</Error>}
             </div>
           )}
-          <Field>
-            <LockOutlined />
-            <input
-              type="password"
-              placeholder="Re-enter password"
-              onChange={onChangePasswordCheck}
-            />
-          </Field>
+
+          <Field
+            type="password"
+            icon={<LockOutlined />}
+            onChangeFunc={onChangePasswordCheck}
+            placeholder="Re-enter password"
+          />
           {mismatchError && <Error>{inValidPasswordText.misMatch}</Error>}
 
           <Button type="submit" disabled={!signUpSuccess} signUpSuccess={signUpSuccess}>
