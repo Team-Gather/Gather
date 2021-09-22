@@ -13,7 +13,7 @@ export const Title = styled.div`
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 25px;
-  color: #595959;
+  color: ${({ theme }) => theme.color.black};
 `;
 
 export const Wrapper = styled.div`
@@ -25,21 +25,12 @@ export const Wrapper = styled.div`
   width: 600px;
   padding: 60px 35px 35px 35px;
   border-radius: 40px;
-  background: #ecf0f3;
+  background: ${({ theme }) => theme.color.background};
   box-shadow: 6px 6px 12px #ceced1, -4px -2px 12px #ffffff;
 
   @media screen and (max-width: 600px) {
     box-shadow: none;
     padding: 10px 20px;
-  }
-
-  & > hr {
-    width: 80%;
-    background-color: #f0f0f0;
-
-    @media screen and (max-width: 600px) {
-      width: 90%;
-    }
   }
 
   & > form {
@@ -62,13 +53,13 @@ export const Field = styled.div`
     width: 100%;
     padding-left: 45px;
     font-size: 16px;
-    color: #595959;
+    color: ${({ theme }) => theme.color.black};
     background: #ecf0f3;
     border-radius: 25px;
     box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73;
   }
   & > input:focus {
-    color: #2d4cc8;
+    color: ${({ theme }) => theme.color.primary};
     box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #ffffff73;
   }
 
@@ -80,7 +71,7 @@ export const Field = styled.div`
     position: absolute;
     width: 50px;
     line-height: 50px;
-    color: #595959;
+    color: ${({ theme }) => theme.color.black};
   }
 `;
 
@@ -90,21 +81,22 @@ export const Button = styled.button`
   height: 50px;
   font-size: 18px;
   font-weight: 600;
-  background: #ecf0f3;
+  background: ${({ signUpSuccess, theme }) =>
+    signUpSuccess ? theme.color.primary : theme.color.background};
   cursor: pointer;
   border-radius: 25px;
-  box-shadow: ${({ signUpSuccess }) =>
-    signUpSuccess
-      ? '2px 2px 5px #babecc, -5px -5px 10px #ffffff73;'
-      : ' inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73'};
-  color: ${({ signUpSuccess }) => (signUpSuccess ? '#595959' : 'lightgray')};
+  box-shadow: ${({ signUpSuccess, theme }) =>
+    signUpSuccess ? theme.shadow.primary : theme.shadow.pressed};
+  color: ${({ signUpSuccess, theme }) =>
+    signUpSuccess ? theme.color.white : theme.color.lightgray};
+  transition: ${({ theme }) => theme.transition.primary};
 
   @media screen and (max-width: 600px) {
     margin: 2rem 0;
   }
 
   &:hover {
-    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73;
+    box-shadow: 2px 2px 4px #babecc, -3px -3px 6px #ffffff73;
   }
 `;
 

@@ -6,7 +6,7 @@ export const NavbarContainer = styled.nav`
   justify-content: space-between;
   align-items: center;
   height: 90px;
-  padding: 1.2rem 8rem;
+  padding: 1.2rem 0.5rem;
   z-index: 6;
   position: sticky;
   color: #44476a;
@@ -20,7 +20,7 @@ export const NavbarContainer = styled.nav`
     height: 60px;
   }
 
-  box-shadow: 3px 3px 6px #b8b9be;
+  box-shadow: ${({ theme }) => theme.shadow.bottom};
 `;
 
 export const NavLogo = styled(Link)`
@@ -64,7 +64,7 @@ export const Post = styled(Link)`
   border-radius: 10px;
   padding: 1rem;
   border: 1px solid #d1d9e6;
-  box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #ffffff;
+  box-shadow: ${({ theme }) => theme.shadow.primary};
 
   @media screen and (max-width: 600px) {
     font-size: 1rem;
@@ -82,7 +82,11 @@ export const Post = styled(Link)`
     background: #ecf0f3;
     border-radius: 5px;
     z-index: -1;
-    box-shadow: inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #ffffff;
+    box-shadow: ${({ theme }) => theme.shadow.pressed};
+  }
+
+  & > span {
+    color: ${({ theme }) => theme.color.primaryNoLinear};
   }
 `;
 
@@ -94,31 +98,19 @@ export const Profile = styled.div`
   font-weight: 500;
   border-radius: 10px;
   padding: 1rem;
-  border: 1px solid #d1d9e6;
-  color: ${({ isDropdown }) => (isDropdown ? '#2D4CC8' : '')};
-  background: ${({ isDropdown }) => (isDropdown ? '#ecf0f3' : '')};
-  box-shadow: ${({ isDropdown }) =>
-    isDropdown
-      ? 'inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #ffffff'
-      : '3px 3px 6px #b8b9be, -3px -3px 6px #ffffff'};
+  transition: ${({ theme }) => theme.transition.primary};
+  color: ${({ isDropdown, theme }) => (isDropdown ? theme.color.white : '')};
+  background: ${({ isDropdown, theme }) =>
+    isDropdown ? theme.color.primary : theme.color.background};
+  box-shadow: ${({ theme }) => theme.shadow.primary};
 
   @media screen and (max-width: 600px) {
     font-size: 1rem;
     padding: 0.5rem;
   }
 
-  &:hover::before {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-
-    background: #ecf0f3;
-    border-radius: 10px;
-    z-index: -1;
-    box-shadow: inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #ffffff;
+  &:hover {
+    box-shadow: ${({ theme }) => theme.shadow.hover};
   }
 `;
 
@@ -148,7 +140,7 @@ export const Options = styled.ul`
 
   & > li:hover {
     background: #ecf0f3;
-    box-shadow: inset -5px 5px 10px #ffffff, inset 5px 5px 10px #ceced1;
+    box-shadow: ${({ theme }) => theme.shadow.pressed};
   }
 
   & > li > a {

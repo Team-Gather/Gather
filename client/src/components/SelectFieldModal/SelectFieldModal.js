@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from 'components/Modal/Modal';
 import { Button, ButtonWrapper, Checkbox, CheckboxContainer, Label } from './SelectFieldModalStyle';
-import { fields } from 'utils/constants';
 import { useRecoilState } from 'recoil';
-import { checkFieldsState, fieldModalState } from 'atom/atom';
+import { checkFieldsState, fieldModalState, isFieldSelected } from 'atom/atom';
+import { fields } from 'utils/constants';
 
 const SelectFieldModal = () => {
-  const [checkedFields, setCheckedFields] = useRecoilState(checkFieldsState);
+  const [checkedFields, setCheckedFields] = useState([]);
+  const [, setsubmmittedFields] = useRecoilState(checkFieldsState);
   const [, setShowSelectFieldModal] = useRecoilState(fieldModalState);
+  const [, setIsSelected] = useRecoilState(isFieldSelected);
 
   const onCloseModal = () => setShowSelectFieldModal(false);
-  const onSubmitFields = () => setShowSelectFieldModal(false);
+
+  const onSubmitFields = () => {
+    setsubmmittedFields([...checkedFields]);
+    setShowSelectFieldModal(false);
+    setIsSelected(true);
+  };
 
   const handleToggle = (title) => {
     const currentIndex = checkedFields.indexOf(title);
