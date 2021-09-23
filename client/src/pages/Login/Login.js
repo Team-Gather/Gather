@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import {
   Container,
   Wrapper,
-  //Field,
   Title,
   ForgotPassword,
   Button,
   GoSignUp,
-  Error,
   SocialIcons,
 } from './LoginStyle';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
@@ -20,7 +18,7 @@ import {
   LinkedinOutlined,
   GithubOutlined,
 } from '@ant-design/icons';
-import Field from 'styles/common/Field/Field';
+import Field from 'components/common/Field/Field';
 
 const Login = () => {
   const [email, setEmail] = useState('');

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { color, shadow } from 'styles/Theme';
 
 export const Label = styled.label`
   margin-bottom: 16px;
@@ -38,10 +39,9 @@ export const Checkbox = styled.li`
   cursor: pointer;
   z-index: 4;
 
-  color: ${({ isChecked, theme }) => (isChecked ? theme.color.white : '')};
-  background: ${({ isChecked, theme }) =>
-    isChecked ? theme.color.primary : theme.color.background};
-  box-shadow: ${({ isChecked, theme }) => (isChecked ? theme.shadow.hover : theme.shadow.primary)};
+  color: ${({ isChecked }) => (isChecked ? color.white : '')};
+  background: ${({ isChecked }) => (isChecked ? color.primary : color.background)};
+  box-shadow: ${({ isChecked }) => (isChecked ? shadow.hover : shadow.primary)};
 `;
 
 export const ButtonWrapper = styled.div`
@@ -64,7 +64,7 @@ export const Button = styled.button`
 
   background: #ecf0f3;
   border-radius: 10px;
-  box-shadow: ${({ theme }) => theme.shadow.primary};
+  box-shadow: ${shadow.primary};
 
   &:first-child {
     color: #f5222d;
@@ -82,7 +82,7 @@ export const Button = styled.button`
     background: #ecf0f3;
     border-radius: 5px;
     z-index: -1;
-    box-shadow: ${({ theme }) => theme.shadow.pressed};
+    box-shadow: ${shadow.pressed};
   }
 
   & > span > svg {

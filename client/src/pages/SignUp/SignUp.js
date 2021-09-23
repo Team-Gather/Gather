@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Container,
-  Wrapper,
-  // Field,
-  GoLogin,
-  Button,
-  Title,
-  Error,
-  SocialIcons,
-} from './SignUpStyle';
-import Field from 'styles/common/Field/Field';
+import { Container, Wrapper, GoLogin, Button, Title, Error, SocialIcons } from './SignUpStyle';
+import Field from 'components/common/Field/Field';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { ROUTES } from 'utils/routes';
-import { emailValidator, passwordValidator } from 'utils/validation';
+import { emailValidator, nameValidator, passwordValidator } from 'utils/validation';
 import { inValidPasswordText } from 'utils/constants';
 import {
   GoogleOutlined,
@@ -24,11 +15,15 @@ import {
 
 const SignUp = () => {
   const [name, setName] = useState('');
+  const [nameInvalidText, setNameInvalidText] = useState('');
+  const [isNameInvalid, setIsNameInvalid] = useState(null);
+
   const [email, setEmail] = useState('');
   const [emailInvalidText, setEmailInvalidText] = useState('');
   const [isEmailInvalid, setIsEmailInvalid] = useState(null);
 
   const [password, setPassword] = useState('');
+  const [isPwRequired, setIsPwRequired] = useState(null);
   const [isPwLengthInValid, setIsPwLengthInValid] = useState(null);
   const [isPwCharInValid, setIsPwCharInValid] = useState(null);
   const [isPwEngInValid, setIsPwEngInValid] = useState(null);
@@ -37,12 +32,29 @@ const SignUp = () => {
   const [mismatchError, setMismatchError] = useState(false);
   const [signUpSuccess, setSignUpSuccess] = useState(false);
 
+  const validateName = (value) => {
+    if (!nameValidator.required.validator(value)) {
+      setNameInvalidText(nameValidator.required.invalidText);
+      setIsNameInvalid(true);
+      return;
+    }
+
+    setIsNameInvalid(false);
+  };
+
   const onChangeName = (e) => {
     const value = e.target.value;
+    validateName(value);
     setName(value);
   };
 
   const validateEmail = (value) => {
+    if (!emailValidator.required.validator(value)) {
+      setEmailInvalidText(emailValidator.required.invalidText);
+      setIsEmailInvalid(true);
+      return;
+    }
+
     if (!emailValidator.format.validator(value)) {
       setEmailInvalidText(emailValidator.format.invalidText);
       setIsEmailInvalid(true);
@@ -58,6 +70,10 @@ const SignUp = () => {
   };
 
   const validatePassword = (value) => {
+    if (!passwordValidator.required.validator(value)) {
+      setIsPwRequired(true);
+    } else setIsPwRequired(false);
+
     if (!passwordValidator.length.validator(value)) {
       setIsPwLengthInValid(true);
     } else setIsPwLengthInValid(false);
@@ -90,26 +106,30 @@ const SignUp = () => {
 
   useEffect(() => {
     if (
-      name &&
-      !mismatchError &&
       email &&
+      name &&
       password &&
+      !isNameInvalid &&
       !isEmailInvalid &&
+      !isPwRequired &&
       !isPwLengthInValid &&
       !isPwCharInValid &&
-      !isPwEngInValid
+      !isPwEngInValid &&
+      !mismatchError
     ) {
       setSignUpSuccess(true);
     } else setSignUpSuccess(false);
   }, [
-    name,
-    mismatchError,
     email,
-    isEmailInvalid,
+    name,
     password,
+    isNameInvalid,
+    isEmailInvalid,
+    isPwRequired,
     isPwLengthInValid,
     isPwCharInValid,
     isPwEngInValid,
+    mismatchError,
   ]);
 
   return (
@@ -138,7 +158,7 @@ const SignUp = () => {
             onChangeFunc={onChangeName}
             placeholder="Name"
           />
-          {!name && <Error>Please input your name</Error>}
+          {isNameInvalid && <Error>{nameInvalidText}</Error>}
 
           <Field
             type="email"
@@ -146,8 +166,7 @@ const SignUp = () => {
             onChangeFunc={onChangeEmail}
             placeholder="Email"
           />
-          {!email && <Error>Please input your email</Error>}
-          {email && isEmailInvalid && <Error>{emailInvalidText}</Error>}
+          {isEmailInvalid && <Error>{emailInvalidText}</Error>}
 
           <Field
             type="password"
@@ -155,7 +174,7 @@ const SignUp = () => {
             onChangeFunc={onChangePassword}
             placeholder="Password"
           />
-          {!password && <Error>Please input your password</Error>}
+          {isPwRequired && <Error>Please input your password</Error>}
           {password && (
             <div>
               {isPwLengthInValid && <Error>{inValidPasswordText.length}</Error>}

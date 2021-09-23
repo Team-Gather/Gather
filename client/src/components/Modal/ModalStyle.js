@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { color } from 'styles/Theme';
 
 export const CreateModal = styled.div`
   position: fixed;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${color.modal_background};
   left: 0;
   bottom: 0;
   top: 0;
@@ -14,7 +15,7 @@ export const CreateModal = styled.div`
     margin-top: 30px;
     opacity: 1 !important;
     display: inline-block;
-    background-color: #ecf0f3;
+    background-color: ${color.background};
     border-radius: 30px;
     user-select: none;
     max-width: 440px;

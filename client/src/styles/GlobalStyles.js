@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import { color } from './Theme';
 
 export const GlobalStyles = createGlobalStyle` 
     ${reset}
@@ -11,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
     }
     body {
         font-family: 'Poppins', sans-serif;
-        background-color: #ecf0f3;
+        background-color: ${color.background};
         color: #000;
     }
     input, button {

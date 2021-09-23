@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { color } from 'styles/Theme';
 
 export const FieldWrapper = styled.div`
   position: relative;
@@ -11,8 +12,8 @@ export const FieldWrapper = styled.div`
     width: 100%;
     padding-left: 45px;
     font-size: 16px;
-    color: ${({ theme }) => theme.color.black};
-    background: ${({ theme }) => theme.color.background};
+    color: ${color.black};
+    background: ${color.background};
     border-radius: 25px;
     box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73;
   }
@@ -25,7 +26,7 @@ export const FieldWrapper = styled.div`
     opacity: 0;
   }
 
-  &:nth-child(2) {
+  &:nth-child(n) {
     margin-top: 20px;
   }
 
@@ -34,7 +35,7 @@ export const FieldWrapper = styled.div`
     top: 50%;
     left: 45px;
     pointer-events: none;
-    color: ${({ theme }) => theme.color.primaryNoLinear};
+    color: ${color.primaryNoLinear};
     transform: translateY(-50%);
   }
 
@@ -42,6 +43,6 @@ export const FieldWrapper = styled.div`
     position: absolute;
     width: 50px;
     line-height: 50px;
-    color: ${({ theme }) => theme.color.black};
+    color: ${color.black};
   }
 `;
