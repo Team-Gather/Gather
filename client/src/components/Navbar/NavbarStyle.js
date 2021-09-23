@@ -10,7 +10,7 @@ export const NavbarContainer = styled.nav`
   padding: 1.2rem 0.5rem;
   z-index: 6;
   position: sticky;
-  color: #44476a;
+  color: ${color.darkBlue};
 
   @media screen and (max-width: 1100px) {
     padding: 1.5rem;
@@ -121,13 +121,13 @@ export const Options = styled.ul`
   width: 160px;
   background: ${color.background};
   border-radius: 20px;
-  box-shadow: -8px -4px 8px 0px #ffffff76, 8px 4px 12px 0px rgba(94, 104, 121, 0.288);
+  box-shadow: ${shadow.option};
 
   & > li {
     position: relative;
     padding: 15px;
     list-style-type: none;
-    color: #37373d;
+    color: ${color.darkGray};
   }
 
   & > li:first-child {

@@ -21,9 +21,8 @@ export const Fields = styled.div`
   font-weight: 500;
   border-radius: 5px;
   margin-right: 0.5rem;
-  color: #2d4cc8;
-  border: 1px solid #d1d9e6;
-
+  color: ${color.primaryNoLinear};
+  border: ${border.primary};
   box-shadow: ${shadow.primary};
 
   @media screen and (max-width: 600px) {
@@ -38,7 +37,7 @@ export const Button = styled.button`
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
-  color: ${({ isClicked }) => (isClicked ? '#2D4CC8' : '#31344b')};
+  color: ${({ isClicked }) => (isClicked ? color.primaryNoLinear : color.black_03)};
   z-index: 4;
   margin-right: 0.5rem;
   border-radius: 10px;

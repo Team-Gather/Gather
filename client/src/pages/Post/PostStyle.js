@@ -16,8 +16,8 @@ export const Container = styled.div`
     font-size: 2rem;
     font-weight: 600;
 
-    color: #44476a;
-    background: #ecf0f3;
+    color: ${color.black_02};
+    background: ${color.background};
     border-radius: 25px;
     box-shadow: ${shadow.pressed};
 
@@ -49,8 +49,8 @@ export const Fields = styled.div`
   font-weight: 500;
   border-radius: 5px;
   margin-right: 0.5rem;
-  color: #2d4cc8;
-  border: 1px solid #d1d9e6;
+  color: ${color.primaryNoLinear};
+  border: ${border.primary};
 
   box-shadow: ${shadow.primary};
 
@@ -66,17 +66,14 @@ export const Button = styled.button`
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
-  color: ${({ isClicked }) => (isClicked ? '#2D4CC8' : '#31344b')};
+  color: ${({ isClicked }) => (isClicked ? color.primaryNoLinear : color.black_03)};
   z-index: 4;
   margin-right: 0.5rem;
   border-radius: 10px;
 
   border: ${({ isFieldsSelected }) => (isFieldsSelected ? 'none' : border.primary)};
   background: ${({ isFieldsSelected }) => (isFieldsSelected ? color.primary : color.background)};
-  box-shadow: ${({ isClicked }) =>
-    isClicked
-      ? 'inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #ffffff'
-      : '3px 3px 6px #b8b9be, -3px -3px 6px #ffffff'};
+  box-shadow: ${({ isClicked }) => (isClicked ? shadow.pressed : shadow.primary)};
 
   &:hover::before {
     position: absolute;
@@ -120,7 +117,7 @@ export const SubmitWrapper = styled.div`
     font-weight: 400;
     border-radius: 5px;
     cursor: pointer;
-    color: #31344b;
+    color: ${color.black_03};
     margin-bottom: 2rem;
     z-index: 4;
     margin-right: 0.5rem;
