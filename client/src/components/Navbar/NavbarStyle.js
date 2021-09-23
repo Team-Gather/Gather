@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { border, color, shadow, transition } from 'styles/Theme';
 
 export const NavbarContainer = styled.nav`
   display: flex;
@@ -20,7 +21,7 @@ export const NavbarContainer = styled.nav`
     height: 60px;
   }
 
-  box-shadow: ${({ theme }) => theme.shadow.bottom};
+  box-shadow: ${shadow.bottom};
 `;
 
 export const NavLogo = styled(Link)`
@@ -63,8 +64,8 @@ export const Post = styled(Link)`
   font-weight: 500;
   border-radius: 10px;
   padding: 1rem;
-  border: 1px solid #d1d9e6;
-  box-shadow: ${({ theme }) => theme.shadow.primary};
+  border: ${border.primary};
+  box-shadow: ${shadow.primary};
 
   @media screen and (max-width: 600px) {
     font-size: 1rem;
@@ -79,14 +80,14 @@ export const Post = styled(Link)`
     bottom: 0;
     right: 0;
 
-    background: #ecf0f3;
+    background: ${color.background};
     border-radius: 5px;
     z-index: -1;
-    box-shadow: ${({ theme }) => theme.shadow.pressed};
+    box-shadow: ${shadow.pressed};
   }
 
   & > span {
-    color: ${({ theme }) => theme.color.primaryNoLinear};
+    color: ${color.primaryNoLinear};
   }
 `;
 
@@ -98,11 +99,10 @@ export const Profile = styled.div`
   font-weight: 500;
   border-radius: 10px;
   padding: 1rem;
-  transition: ${({ theme }) => theme.transition.primary};
-  color: ${({ isDropdown, theme }) => (isDropdown ? theme.color.white : '')};
-  background: ${({ isDropdown, theme }) =>
-    isDropdown ? theme.color.primary : theme.color.background};
-  box-shadow: ${({ theme }) => theme.shadow.primary};
+  transition: ${transition.primary};
+  color: ${({ isDropdown }) => (isDropdown ? color.white : '')};
+  background: ${({ isDropdown }) => (isDropdown ? color.primary : color.background)};
+  box-shadow: ${shadow.primary};
 
   @media screen and (max-width: 600px) {
     font-size: 1rem;
@@ -110,7 +110,7 @@ export const Profile = styled.div`
   }
 
   &:hover {
-    box-shadow: ${({ theme }) => theme.shadow.hover};
+    box-shadow: ${shadow.hover};
   }
 `;
 
@@ -119,7 +119,7 @@ export const Options = styled.ul`
   top: 80px;
   right: 0px;
   width: 160px;
-  background: #ecf0f3;
+  background: ${color.background};
   border-radius: 20px;
   box-shadow: -8px -4px 8px 0px #ffffff76, 8px 4px 12px 0px rgba(94, 104, 121, 0.288);
 
@@ -139,8 +139,8 @@ export const Options = styled.ul`
   }
 
   & > li:hover {
-    background: #ecf0f3;
-    box-shadow: ${({ theme }) => theme.shadow.pressed};
+    background: ${color.background};
+    box-shadow: ${shadow.pressed};
   }
 
   & > li > a {

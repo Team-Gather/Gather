@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { color, shadow, transition } from 'styles/Theme';
 
 export const Container = styled.div`
   display: flex;
@@ -18,7 +19,7 @@ export const Wrapper = styled.div`
   width: 430px;
   padding: 60px 35px 35px 35px;
   border-radius: 40px;
-  background: ${({ theme }) => theme.color.background};
+  background: ${color.background};
   box-shadow: 6px 6px 12px #ceced1, -4px -2px 12px #ffffff;
 
   @media screen and (max-width: 600px) {
@@ -30,7 +31,7 @@ export const Title = styled.div`
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 10px;
-  color: #595959;
+  color: ${color.black};
 `;
 
 export const ImgArea = styled.div`
@@ -41,7 +42,7 @@ export const ImgArea = styled.div`
   height: 150px;
   width: 150px;
   margin: 0 5px;
-  background: #ecf0f3;
+  background: ${color.background};
   border-radius: 50%;
   box-shadow: -3px 3px 7px #ffffff, 3px 3px 5px #ceced1;
 `;
@@ -69,8 +70,8 @@ export const Field = styled.div`
     width: 100%;
     padding-left: 45px;
     font-size: 16px;
-    color: ${({ theme }) => theme.color.black};
-    background: ${({ theme }) => theme.color.background};
+    color: ${color.black};
+    background: ${color.background};
     border-radius: 25px;
     box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73;
   }
@@ -92,7 +93,7 @@ export const Field = styled.div`
     top: 50%;
     left: 45px;
     pointer-events: none;
-    color: ${({ theme }) => theme.color.primaryNoLinear};
+    color: ${color.primaryNoLinear};
     transform: translateY(-50%);
   }
 
@@ -100,7 +101,7 @@ export const Field = styled.div`
     position: absolute;
     width: 50px;
     line-height: 50px;
-    color: ${({ theme }) => theme.color.black};
+    color: ${color.black};
   }
 `;
 
@@ -110,7 +111,7 @@ export const ForgotPassword = styled.div`
 
   & > a {
     font-size: 15px;
-    color: ${({ theme }) => theme.color.primaryNoLinear};
+    color: ${color.primaryNoLinear};
   }
 
   &:hover a {
@@ -127,13 +128,13 @@ export const Button = styled.button`
   cursor: pointer;
   border-radius: 25px;
 
-  transition: ${({ theme }) => theme.transition.primary};
-  background: ${({ theme }) => theme.color.primary};
-  box-shadow: ${({ theme }) => theme.shadow.primary};
-  color: ${({ theme }) => theme.color.white};
+  transition: ${transition.primary};
+  background: ${color.primary};
+  box-shadow: ${shadow.primary};
+  color: ${color.white};
 
   &:hover {
-    box-shadow: ${({ theme }) => theme.shadow.hover};
+    box-shadow: ${shadow.hover};
   }
 `;
 
@@ -173,7 +174,7 @@ export const SocialIcons = styled.div`
     margin: 0.5rem;
     border-radius: 50%;
 
-    background: #ecf0f3;
+    background: ${color.background};
     border-radius: 50%;
     box-shadow: -3px 3px 7px #ffffff, 3px 3px 5px #ceced1;
 

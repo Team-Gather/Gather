@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { color, shadow, transition } from 'styles/Theme';
 
 export const Container = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ export const Title = styled.div`
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 25px;
-  color: ${({ theme }) => theme.color.black};
+  color: ${color.black};
 `;
 
 export const Wrapper = styled.div`
@@ -25,7 +26,7 @@ export const Wrapper = styled.div`
   width: 600px;
   padding: 60px 35px 35px 35px;
   border-radius: 40px;
-  background: ${({ theme }) => theme.color.background};
+  background: ${color.background};
   box-shadow: 6px 6px 12px #ceced1, -4px -2px 12px #ffffff;
 
   @media screen and (max-width: 600px) {
@@ -53,13 +54,13 @@ export const Field = styled.div`
     width: 100%;
     padding-left: 45px;
     font-size: 16px;
-    color: ${({ theme }) => theme.color.black};
-    background: #ecf0f3;
+    color: ${color.black};
+    background: ${color.background};
     border-radius: 25px;
     box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73;
   }
   & > input:focus {
-    color: ${({ theme }) => theme.color.primary};
+    color: ${color.primary};
     box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #ffffff73;
   }
 
@@ -71,7 +72,7 @@ export const Field = styled.div`
     position: absolute;
     width: 50px;
     line-height: 50px;
-    color: ${({ theme }) => theme.color.black};
+    color: ${color.black};
   }
 `;
 
@@ -81,15 +82,12 @@ export const Button = styled.button`
   height: 50px;
   font-size: 18px;
   font-weight: 600;
-  background: ${({ signUpSuccess, theme }) =>
-    signUpSuccess ? theme.color.primary : theme.color.background};
+  background: ${({ signUpSuccess }) => (signUpSuccess ? color.primary : color.background)};
   cursor: pointer;
   border-radius: 25px;
-  box-shadow: ${({ signUpSuccess, theme }) =>
-    signUpSuccess ? theme.shadow.primary : theme.shadow.pressed};
-  color: ${({ signUpSuccess, theme }) =>
-    signUpSuccess ? theme.color.white : theme.color.lightgray};
-  transition: ${({ theme }) => theme.transition.primary};
+  box-shadow: ${({ signUpSuccess }) => (signUpSuccess ? shadow.primary : shadow.pressed)};
+  color: ${({ signUpSuccess }) => (signUpSuccess ? color.white : color.lightgray)};
+  transition: ${transition.primary};
 
   @media screen and (max-width: 600px) {
     margin: 2rem 0;
@@ -103,7 +101,7 @@ export const Button = styled.button`
 export const GoLogin = styled.div`
   font-size: 16px;
 
-  color: #595959;
+  color: ${color.black};
   margin: 10px 0;
 
   & > a {
@@ -138,7 +136,7 @@ export const SocialIcons = styled.div`
     margin: 0 2rem;
     border-radius: 50%;
 
-    background: #ecf0f3;
+    background: ${color.background};
     border-radius: 50%;
     box-shadow: -3px 3px 7px #ffffff, 3px 3px 5px #ceced1;
 
@@ -158,7 +156,7 @@ export const SocialIcons = styled.div`
     bottom: 0;
     right: 0;
 
-    background: #ecf0f3;
+    background: ${color.background};
     border-radius: 50%;
     box-shadow: inset -3px 3px 7px #ffffff, inset 3px 3px 5px #ceced1;
   }

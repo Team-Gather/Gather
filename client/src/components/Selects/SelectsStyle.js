@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { MinusOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import { border, color, shadow } from 'styles/Theme';
 
 export const SelectWrapper = styled.div`
   width: 100%;
@@ -23,7 +24,7 @@ export const Fields = styled.div`
   color: #2d4cc8;
   border: 1px solid #d1d9e6;
 
-  box-shadow: ${({ theme }) => theme.shadow.primary};
+  box-shadow: ${shadow.primary};
 
   @media screen and (max-width: 600px) {
     font-size: 12px;
@@ -42,13 +43,9 @@ export const Button = styled.button`
   margin-right: 0.5rem;
   border-radius: 10px;
 
-  border: ${({ isFieldsSelected, theme }) => (isFieldsSelected ? 'none' : theme.border.primary)};
-  background: ${({ theme, isFieldsSelected }) =>
-    isFieldsSelected ? theme.color.primary : theme.color.background};
-  box-shadow: ${({ isClicked }) =>
-    isClicked
-      ? 'inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #ffffff'
-      : '3px 3px 6px #b8b9be, -3px -3px 6px #ffffff'};
+  border: ${({ isFieldsSelected }) => (isFieldsSelected ? 'none' : border.primary)};
+  background: ${({ isFieldsSelected }) => (isFieldsSelected ? color.primary : color.background)};
+  box-shadow: ${({ isClicked }) => (isClicked ? shadow.pressed : shadow.hover)};
 
   &:hover::before {
     position: absolute;
@@ -63,14 +60,14 @@ export const Button = styled.button`
     ${({ isFieldsSelected }) =>
       !isFieldsSelected &&
       css`
-        background: #ecf0f3;
-        box-shadow: inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #ffffff;
+        background: ${color.background};
+        box-shadow: ${shadow.pressed};
       `}
   }
 
   & > span > svg {
     vertical-align: unset;
-    color: ${({ isFieldsSelected, theme }) => (isFieldsSelected ? theme.color.white : '')};
+    color: ${({ isFieldsSelected }) => (isFieldsSelected ? color.white : '')};
   }
 `;
 

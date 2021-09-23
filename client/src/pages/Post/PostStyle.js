@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { border, color, shadow, transition } from 'styles/Theme';
 
 export const Container = styled.div`
   min-height: 650px;
@@ -18,7 +19,7 @@ export const Container = styled.div`
     color: #44476a;
     background: #ecf0f3;
     border-radius: 25px;
-    box-shadow: ${({ theme }) => theme.shadow.pressed};
+    box-shadow: ${shadow.pressed};
 
     &::placeholder {
       font-family: 'Poppins', sans-serif;
@@ -51,7 +52,7 @@ export const Fields = styled.div`
   color: #2d4cc8;
   border: 1px solid #d1d9e6;
 
-  box-shadow: ${({ theme }) => theme.shadow.primary};
+  box-shadow: ${shadow.primary};
 
   @media screen and (max-width: 600px) {
     font-size: 12px;
@@ -70,9 +71,8 @@ export const Button = styled.button`
   margin-right: 0.5rem;
   border-radius: 10px;
 
-  border: ${({ isFieldsSelected, theme }) => (isFieldsSelected ? 'none' : theme.border.primary)};
-  background: ${({ theme, isFieldsSelected }) =>
-    isFieldsSelected ? theme.color.primary : theme.color.background};
+  border: ${({ isFieldsSelected }) => (isFieldsSelected ? 'none' : border.primary)};
+  background: ${({ isFieldsSelected }) => (isFieldsSelected ? color.primary : color.background)};
   box-shadow: ${({ isClicked }) =>
     isClicked
       ? 'inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #ffffff'
@@ -91,14 +91,14 @@ export const Button = styled.button`
     ${({ isFieldsSelected }) =>
       !isFieldsSelected &&
       css`
-        background: #ecf0f3;
-        box-shadow: inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #ffffff;
+        background: ${color.background};
+        box-shadow: ${shadow.pressed};
       `}
   }
 
   & > span > svg {
     vertical-align: unset;
-    color: ${({ isFieldsSelected, theme }) => (isFieldsSelected ? theme.color.white : '')};
+    color: ${({ isFieldsSelected }) => (isFieldsSelected ? color.white : '')};
   }
 `;
 
@@ -126,8 +126,8 @@ export const SubmitWrapper = styled.div`
     margin-right: 0.5rem;
     border-radius: 10px;
 
-    transition: ${({ theme }) => theme.transition.primary};
-    box-shadow: ${({ theme }) => theme.shadow.primary};
+    transition: ${transition.primary};
+    box-shadow: ${shadow.primary};
 
     & > span > svg {
       vertical-align: unset;
@@ -142,15 +142,15 @@ export const SubmitWrapper = styled.div`
     bottom: 0;
     right: 0;
 
-    background: #ecf0f3;
+    background: ${color.background};
     border-radius: 10px;
     z-index: -1;
-    box-shadow: inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #ffffff;
+    box-shadow: ${shadow.pressed};
   }
 
   & > .submit_post {
-    background: ${({ theme }) => theme.color.primary};
-    color: ${({ theme }) => theme.color.white};
+    background: ${color.primary};
+    color: ${color.white};
   }
 
   & > .submit_post:hover::before {
@@ -163,6 +163,6 @@ export const SubmitWrapper = styled.div`
     border-radius: 10px;
     z-index: -1;
 
-    box-shadow: ${({ theme }) => theme.shadow.hover};
+    box-shadow: ${shadow.hover};
   }
 `;
