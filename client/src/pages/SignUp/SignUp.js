@@ -106,6 +106,9 @@ const SignUp = () => {
 
   useEffect(() => {
     if (
+      email &&
+      name &&
+      password &&
       !isNameInvalid &&
       !isEmailInvalid &&
       !isPwRequired &&
@@ -117,6 +120,9 @@ const SignUp = () => {
       setSignUpSuccess(true);
     } else setSignUpSuccess(false);
   }, [
+    email,
+    name,
+    password,
     isNameInvalid,
     isEmailInvalid,
     isPwRequired,
